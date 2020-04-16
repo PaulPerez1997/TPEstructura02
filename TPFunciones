@@ -1,0 +1,230 @@
+#ifndef FUNCIONES_H_INCLUDED
+#define FUNCIONES_H_INCLUDED
+
+using namespace std;
+
+struct producto {
+int ID,STOCK,STOCKMIN;
+char NOMBRE[30];
+float PRECIO;
+};
+
+void cuerpo(){
+    int c=0;
+    while (c<16)
+    {
+        gotoxy(1,c);
+    cout << "|";
+    c++;
+    }
+
+    c=2;
+    while (c<80)
+    {
+        gotoxy(c,1);
+        cout << "-";
+        c++;
+    }
+    c=1;
+    while(c<15)
+    {
+        c++;
+        gotoxy(40,c);
+        cout << "|";
+    }
+    c=1;
+    while(c<15)
+    {
+        c++;
+        gotoxy(80,c);
+        cout << "|";
+    }
+    c=2;
+    while (c<80)
+    {
+        gotoxy(c,15);
+        cout << "-";
+        c++;
+    }
+
+    gotoxy(1,1);
+    cout << "*";
+    gotoxy(80,1);
+    cout << "*";
+    gotoxy(1,15);
+    cout << "*";
+    gotoxy(80,15);
+    cout << "*";
+}
+
+void cuerpolistado(){
+    int c=0;
+    while (c<16)
+    {
+        gotoxy(1,c);
+    cout << "|";
+    c++;
+    }
+
+    c=2;
+    while (c<80)
+    {
+        gotoxy(c,1);
+        cout << "-";
+        c++;
+    }
+    c=1;
+    while(c<15)
+    {
+        c++;
+        gotoxy(80,c);
+        cout << "|";
+    }
+    c=2;
+    while (c<80)
+    {
+        gotoxy(c,15);
+        cout << "-";
+        c++;
+    }
+
+    gotoxy(1,1);
+    cout << "*";
+    gotoxy(80,1);
+    cout << "*";
+    gotoxy(1,15);
+    cout << "*";
+    gotoxy(80,15);
+    cout << "*";
+}
+void menu()
+{
+   system("color 5F");
+                              gotoxy(15,3);
+                              cout << "Bienvenido" <<endl;
+            gotoxy(5,5);
+    cout <<"Elija su opcion" << endl;
+    cout <<endl;
+    gotoxy(5,9);
+    cout <<" 1- Cargar Producto";
+    gotoxy(5,10);
+    cout <<" 2- Editar Producto x ID";
+    gotoxy(5,11);
+    cout <<" 3- Listar Producto x ID";
+    gotoxy(5,12);
+    cout <<" 4- Listar Producto por Precio";
+    gotoxy(5,13);
+    cout <<" 5- Cerrar Programa ";
+   // posicion();
+
+};
+void posicion()
+{
+    gotoxy (5,17);
+    }
+
+void POS_ESC()
+{
+    gotoxy(42,9);
+}
+
+void limpiar()
+{
+    cls();
+    cuerpo();
+    menu();
+}
+
+void cargar(producto *reg, int tam)
+{
+   POS_ESC();
+    cout << "Ingrese el ID" << endl;
+    posicion();
+    cin >> reg[tam].ID;
+    limpiar();
+    POS_ESC();
+    cout << "ingrese el Nombre"<< endl;
+    posicion();
+    cin.ignore();
+    posicion();
+    cin >> reg[tam].NOMBRE;
+    limpiar();
+    POS_ESC();
+    cout << "Introduzca el Precio" << endl;
+    posicion();
+    cin >> reg[tam].PRECIO;
+    limpiar();
+    POS_ESC();
+    cout << "Introduzca el Stock" << endl;
+    posicion();
+    cin >> reg[tam].STOCK;
+    limpiar();
+    POS_ESC();
+    cout << "Stock Minimo" << endl;
+    posicion();
+    cin >> reg[tam].STOCKMIN;
+}
+
+void Editar(producto *reg, int tam)
+{
+    int edit;
+    POS_ESC();
+    cout << "introduzca ID a editar" << endl;
+    posicion();
+    cin >> edit;
+    for (int i=0;i<tam;i++)
+    {
+        if (reg[i].ID==edit)
+        {
+            POS_ESC();
+    cout << "Nuevo ID" << endl;
+    posicion();
+    cin >> reg[i].ID;
+    limpiar();
+    POS_ESC();
+    cout << "Nuevo Nombre"<< endl;
+    posicion();
+    cin.ignore();
+    posicion();
+    cin >>  reg[i].NOMBRE;
+    limpiar();
+    POS_ESC();
+    cout << "Nuevo Precio" << endl;
+    posicion();
+    cin >> reg[i].PRECIO;
+    limpiar();
+    POS_ESC();
+    cout << "Nuevo Stock" << endl;
+    posicion();
+    cin >> reg[i].STOCK;
+    limpiar();
+    POS_ESC();
+    cout << "Nuevo Stock Minimo" << endl;
+    posicion();
+    cin >> reg[i].STOCKMIN;
+            i=tam;
+        }
+        else{
+            POS_ESC();
+            cout << "Error, ID no encontrado" << endl;
+            cin.ignore();
+            cin.get();
+        }
+    }
+}
+
+void Listar_ID (producto *reg, int tam)
+{
+    cls();
+    cuerpolistado();
+    for (int i=0;i<tam;i++)
+    {
+        gotoxy(5,8+i);
+        cout << "ID: " << reg[i].ID << " Nombre: " << reg[i].NOMBRE << endl;
+        cin.ignore();
+    }
+
+
+}
+
+
