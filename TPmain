@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cstdlib>
+#include <stdio.h>
+using namespace std;
+#include "rlutil.h"
+using namespace rlutil;
+#include "funciones.h"
+int main()
+{
+    int tam=0,op;
+    producto reg[tam];
+    bool salir=true;
+    while (salir)
+        {
+    limpiar();
+    posicion();
+    cin >> op;
+    switch(op)
+    {
+        case 1:{
+            cargar(reg,tam);
+            tam++;
+
+        }break;
+        case 2:{
+            Editar(reg,tam);
+        }break;
+        case 3:{
+         Listar_ID(reg,tam);
+         posicion();
+         cin.ignore();
+        }break;
+        case 4:{
+
+        }break;
+        case 5:
+            {
+                gotoxy(42,9);
+            cout << "Saliendo del Registro" << endl;
+        salir=false;
+            }break;
+        default:{
+            gotoxy(42,9);
+            cout << "opcion Incorrecta" << endl;
+            cin.ignore();
+            cin.get();
+        }break;
+    }
+    }
+ gotoxy(5,17);
+    cout << endl;
+    return 0;
+}
+
+
